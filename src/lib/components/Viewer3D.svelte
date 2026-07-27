@@ -6,6 +6,7 @@
 	import { configuratorState, catalog, type ConfiguratorState } from '$lib/stores/configuratorStore';
 	import { createBodyTexture } from '$lib/utils/gradientTexture';
 	import { colors } from '$lib/theme';
+	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 	let canvasEl: HTMLCanvasElement;
 	let containerEl: HTMLDivElement;
@@ -14,6 +15,8 @@
 	let scene: THREE.Scene;
 	let camera: THREE.PerspectiveCamera;
 	let controls: OrbitControls;
+
+	let loader: GLTFLoader;
 
 	let potera: THREE.Group;
 	let bodyMesh: THREE.Mesh;
@@ -154,8 +157,18 @@
 		rimLight.position.set(-2, -1, -2);
 		scene.add(rimLight);
 
+
+		loader = new GLTFLoader();
+		loader.load('./potera.glb', (gltf) => {
+			scene.add(gltf.scene);
+		});
+
+
+		
 		potera = new THREE.Group();
 		scene.add(potera);
+
+		
 
 		controls = new OrbitControls(camera, renderer.domElement);
 		controls.enableDamping = true;
