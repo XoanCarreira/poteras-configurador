@@ -3,6 +3,7 @@
 		"id": "clasica",
 		"nombre": "Clásica",
 		"descripcion": "Silueta de torpedo tradicional, cuerpo redondeado.",
+		"modelo3d": "/models/potera-clasica-v1.glb",
 		"perfil": [
 			{ "x": 0.0, "y": -1.0 },
 			{ "x": 0.16, "y": -0.75 },

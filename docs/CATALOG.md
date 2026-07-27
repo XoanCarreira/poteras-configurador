@@ -101,8 +101,30 @@ opciones disponibles:
 | `colorHex` | string | Color a aplicar al material de las plumas |
 
 #### (A confirmar) `crownFinish` / `keelFinish` — Acabado corona de anzuelos / plomada
-Pendiente de confirmar si estas piezas metálicas también son personalizables
-o si tienen un acabado fijo único para todo el catálogo.
+✅ **Parcialmente resuelto** a partir del primer modelo 3D real recibido del
+fabricante: estas piezas (corona de anzuelos, plomada y anilla) se agrupan en
+una única **zona "hardware"** con acabado metálico fijo (no personalizable por
+el usuario), ya que en el modelo real no vienen separadas para elegir color
+independiente. *Pendiente de confirmar con el fabricante si esto es
+intencional o si en algún momento debería ser personalizable.*
+
+### Convención de nombres de zona (confirmada con el primer modelo real)
+
+El primer modelo `.glb` recibido usa esta convención de nombres de objeto en
+Blender, que el código de carga (`Viewer3D.svelte`) reconoce automáticamente
+(sin distinguir mayúsculas/minúsculas, por coincidencia de subcadena):
+
+| Nombre en Blender | Zona | Personalizable |
+|---|---|---|
+| `Cuerpo` | `cuerpo` | Sí — `bodyPattern` |
+| `Ojo d`, `Ojo i` | `ojos` | Sí — `eyeColor` |
+| `Pluma d`, `Pluma i` | `plumas` | Sí — `featherColor` |
+| `Plomo` | `hardware` | No (acabado metálico fijo) |
+| `Coronas` / objeto de curva Bézier (corona de anzuelos) | `hardware` | No (acabado metálico fijo) |
+| `Anilla` | `hardware` | No (acabado metálico fijo) |
+
+Cualquier objeto que no encaje con ninguna de estas palabras clave se trata
+por defecto como `cuerpo` (para evitar que quede invisible o sin material).
 
 *Pendiente: listado real y completo de opciones disponibles en cada una de
 estas paletas (cuántos `bodyPattern`, `eyeColor` y `featherColor` existen).*

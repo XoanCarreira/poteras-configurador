@@ -42,20 +42,28 @@
 
 1. **Modelado de formas**: cada forma base de potera se modela una única vez
    (ej. en Blender) y se exporta en formato `.glb`/`.gltf`.
-2. **Escalado por tamaño**: el tamaño se resuelve con transformaciones de escala
-   sobre el mismo modelo (no requiere modelar de nuevo), salvo que un tamaño
-   implique un cambio de proporciones reales — a validar caso por caso.
-3. **Materiales por zona**: dado que cuerpo, ojos y plumas se personalizan de
-   forma **independiente**, cada modelo `.glb` debe tener el mesh separado en,
-   como mínimo, estas sub-partes (cada una con su propio slot de material):
-   - `cuerpo` → recibe el material/textura de `bodyPattern`.
-   - `ojos` → recibe el color de `eyeColor`.
-   - `plumas` → recibe el color de `featherColor`.
-   - (a confirmar) `corona`/`plomada` → posible acabado fijo o personalizable.
+2. **Escalado por tamaño**: ✅ **Implementado de forma robusta**: el modelo se
+   centra y escala automáticamente (`normalizeToGroup()` en `Viewer3D.svelte`)
+   para que su dimensión mayor mida un tamaño objetivo, combinado con el
+   `factorEscala` del tamaño elegido. Así, quien modela en Blender no necesita
+   preocuparse por las unidades/orientación exactas de exportación.
+3. **Materiales por zona**: ✅ **Implementado**. Dado que cuerpo, ojos y
+   plumas se personalizan de forma **independiente**, el código clasifica
+   automáticamente cada sub-mesh del `.glb` según su nombre (coincidencia de
+   subcadena, sin distinguir mayúsculas/minúsculas):
+   - contiene "cuerpo" → recibe el material/textura de `bodyPattern`.
+   - contiene "ojo" → recibe el color de `eyeColor`.
+   - contiene "pluma" → recibe el color de `featherColor`.
+   - contiene "plomo", "corona", "anilla" o "bezier" → zona `hardware`,
+     acabado metálico fijo (no personalizable) — plomada, corona de anzuelos
+     y anilla.
+   - cualquier otro nombre → cae por defecto en `cuerpo` (mejor pintable que
+     invisible/gris).
 
-   En Three.js esto se traduce en acceder a cada sub-mesh por nombre (definido
-   al exportar desde Blender) y asignarle su `MeshStandardMaterial`
-   correspondiente de forma independiente.
+   Esta convención se confirmó con el primer modelo real recibido del
+   fabricante (ver tabla completa en `CATALOG.md`). No hace falta ninguna
+   configuración manual adicional por modelo: basta con nombrar los objetos
+   en Blender siguiendo esta convención.
 4. **Patrones de color como materiales**: ✅ **Decisión tomada** — cada
    `bodyPattern` de tipo degradado se resuelve mediante una **textura
    pre-generada** (imagen ajustada al UV del modelo), no mediante shader

@@ -14,6 +14,10 @@
       en `ARCHITECTURE.md` (poligonaje medio, exportación `.glb` con Draco,
       pensado para ir fluido en móviles de gama media/baja). *(Bloqueante para
       la Fase 3.)*
+      ✅ **Primer modelo real recibido e integrado** (forma "Clásica") — el
+      fabricante ya modela en Blender y sigue la convención de nombres de
+      zona documentada en `CATALOG.md`. Pendiente: mismo trabajo para el
+      resto de formas (2-4 en total).
 
 ## Fase 1 — Prototipo técnico
 - [x] Montar proyecto base SvelteKit.
@@ -41,7 +45,15 @@
 - [ ] Cargar datos del catálogo desde `data/*.json`.
 
 ## Fase 3 — Contenido real
-- [ ] Sustituir modelos/texturas de prueba por los reales del fabricante.
+- [x] Cargar el primer modelo 3D real (`.glb`) de la forma "Clásica" en el
+      visualizador, con clasificación automática de zonas por nombre.
+- [ ] **Optimizar poligonaje del primer modelo**: tiene ~36.000 triángulos en
+      total, muy por encima del objetivo (~5.000-15.000). Casi todo lo aporta
+      la corona de anzuelos (objeto de curva Bézier, ~32.000 tris) — reducir
+      la resolución/bevel de la curva en Blender antes de re-exportar, o
+      convertirla a una malla más simple/low-poly.
+- [ ] Sustituir modelos/texturas de prueba por los reales del fabricante
+      (resto de formas: 2-4 en total).
 - [ ] Aplicar reglas de compatibilidad forma/tamaño/patrón.
 - [ ] Pulido visual (iluminación, fondo, transiciones).
 

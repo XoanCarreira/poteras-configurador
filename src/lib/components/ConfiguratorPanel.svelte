@@ -11,7 +11,7 @@
 	<header>
 		<img class="logo" src="/brand/logo-riotinta.png" alt="Poteras Artesanales Riotinta" />
 		<span class="eyebrow">Configurador</span>
-		<h1>Diseña tu potera</h1>
+		<h1>Deseña a túa poteira</h1>
 	</header>
 
 	<section>
@@ -46,7 +46,7 @@
 	</section>
 
 	<section>
-		<h2>Patrón de cuerpo</h2>
+		<h2>Patrón de corpo</h2>
 		<div class="swatch-grid">
 			{#each catalog.bodyPatterns as pattern}
 				<button
@@ -62,7 +62,7 @@
 	</section>
 
 	<section>
-		<h2>Color de ojos</h2>
+		<h2>Cor de ollos</h2>
 		<div class="swatch-grid swatch-grid--small">
 			{#each catalog.eyeColors as eye}
 				<button
@@ -78,7 +78,7 @@
 	</section>
 
 	<section>
-		<h2>Color de plumas</h2>
+		<h2>Cor de plumas</h2>
 		<div class="swatch-grid swatch-grid--small">
 			{#each catalog.featherColors as feather}
 				<button
@@ -94,16 +94,16 @@
 	</section>
 
 	<p class="disclaimer">
-		Prototipo técnico — geometría y colores de muestra. Los modelos y patrones reales del
-		fabricante se incorporarán en una fase posterior.
+		Prototipo técnico — xeometría e cores de mostra. Os modelos e patróns reais do
+		fabricante incorporaranse nunha fase posterior.
 	</p>
 </aside>
 
 <style>
 	/*
-	 * Todos los colores/tipografías/radios de este componente vienen de las
-	 * variables globales (ver src/lib/theme.ts + app.css). No hardcodear
-	 * valores nuevos aquí: añadirlos a theme.ts si hace falta un tono más.
+	 * Todos os colores/tipografías/radios de este componente vienen de las
+	 * variables globais (ver src/lib/theme.ts + app.css). No hardcodear
+	 * valores novos aquí: engadirlos a theme.ts se fai falta un tono máis.
 	 */
 	.panel {
 		display: flex;

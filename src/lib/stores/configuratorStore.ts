@@ -1,9 +1,43 @@
 import { writable } from 'svelte/store';
-import shapes from '$lib/data/shapes.json';
-import sizes from '$lib/data/sizes.json';
-import bodyPatterns from '$lib/data/bodyPatterns.json';
-import eyeColors from '$lib/data/eyeColors.json';
-import featherColors from '$lib/data/featherColors.json';
+import shapesData from '$lib/data/shapes.json';
+import sizesData from '$lib/data/sizes.json';
+import bodyPatternsData from '$lib/data/bodyPatterns.json';
+import eyeColorsData from '$lib/data/eyeColors.json';
+import featherColorsData from '$lib/data/featherColors.json';
+
+/**
+ * Tipos del catálogo (ver docs/CATALOG.md). Tipar explícitamente los JSON
+ * evita errores de TypeScript cuando un campo (como `modelo3d`) solo está
+ * presente en algunas entradas todavía.
+ */
+export interface Shape {
+	id: string;
+	nombre: string;
+	descripcion?: string;
+	/** Ruta al modelo .glb real, si ya existe (ver ARCHITECTURE.md). */
+	modelo3d?: string;
+	/** Perfil 2D usado por la geometría placeholder mientras no hay modelo3d. */
+	perfil: { x: number; y: number }[];
+}
+
+export interface Size {
+	id: string;
+	nombre: string;
+	factorEscala: number;
+}
+
+export interface BodyPattern {
+	id: string;
+	nombre: string;
+	tipo: 'solido' | 'degradado' | 'grafico';
+	colores: string[];
+}
+
+export interface ColorOption {
+	id: string;
+	nombre: string;
+	colorHex: string;
+}
 
 export interface ConfiguratorState {
 	shapeId: string;
@@ -12,6 +46,12 @@ export interface ConfiguratorState {
 	eyeColorId: string;
 	featherColorId: string;
 }
+
+const shapes = shapesData as Shape[];
+const sizes = sizesData as Size[];
+const bodyPatterns = bodyPatternsData as BodyPattern[];
+const eyeColors = eyeColorsData as ColorOption[];
+const featherColors = featherColorsData as ColorOption[];
 
 const initialState: ConfiguratorState = {
 	shapeId: shapes[0].id,
