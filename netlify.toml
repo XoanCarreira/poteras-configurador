@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback: cualquier ruta no encontrada sirve index.html (útil si en el
+# futuro se añaden rutas dinámicas en el cliente).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

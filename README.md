@@ -72,7 +72,23 @@ arquitectura (cambio de forma/tamaño, materiales independientes por zona)
 antes de recibir los modelos definitivos. Detalles de desarrollo adicionales
 en [`README-DEV.md`](README-DEV.md).
 
-## 8. Estado actual
+## 8. Despliegue en Netlify
+
+El proyecto usa **`@sveltejs/adapter-static`** (es una app 100% estática, sin
+datos de servidor) y ya incluye `netlify.toml` con la configuración de build.
+Al conectar el repo en Netlify:
+
+- **Build command**: `npm run build` (ya viene en `netlify.toml`, no hace
+  falta configurarlo a mano en el panel de Netlify).
+- **Publish directory**: `build` (idem, ya viene en `netlify.toml`).
+
+Si el sitio ya estaba desplegado mostrando el `README.md` en crudo, era porque
+faltaba esta configuración (Netlify no sabía qué comando ejecutar ni qué
+carpeta publicar). Con `netlify.toml` en la raíz del repo, el siguiente
+despliegue debería detectarlo automáticamente — puede que haga falta forzar un
+"Clear cache and deploy" desde el panel de Netlify la primera vez.
+
+## 9. Estado actual
 
 📝 **Fase de definición y prototipo técnico.** Este documento y los que le
 acompañan se irán ampliando a medida que se aporte más información (fotos del

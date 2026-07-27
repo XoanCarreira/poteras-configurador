@@ -3,11 +3,15 @@
 ## 1. Stack
 
 - **Framework:** [SvelteKit](https://kit.svelte.dev/)
-- **Lenguajes:** HTML / CSS / JavaScript (TypeScript a valorar)
+- **Lenguajes:** HTML / CSS / TypeScript
 - **Motor 3D:** [Three.js](https://threejs.org/)
+- **Adaptador de despliegue:** `@sveltejs/adapter-static` — la app es 100%
+  estática (todo el catálogo vive en JSON embebido, sin backend ni datos de
+  servidor), así que se prerenderiza entera a HTML/JS/CSS puro en `build/`.
+  Compatible con cualquier hosting estático (Netlify, Vercel, GitHub Pages...).
+  Configuración de build para Netlify en `netlify.toml` (raíz del repo).
 - **Renderizado:** Client-Side Rendering para las vistas del configurador
   (Three.js necesita `window`/WebGL, no se puede pre-renderizar en servidor).
-  El resto del sitio (páginas informativas, listados) puede usar SSR/SSG normal de SvelteKit.
 
 ## 2. Componentes principales
 
