@@ -1,0 +1,44 @@
+[
+	{
+		"id": "degradado-azul-blanco",
+		"nombre": "Degradado azul-blanco",
+		"tipo": "degradado",
+		"colores": ["#1f6fd6", "#ffffff"]
+	},
+	{
+		"id": "degradado-naranja-amarillo",
+		"nombre": "Degradado naranja-amarillo",
+		"tipo": "degradado",
+		"colores": ["#ff5a1f", "#ffe600"]
+	},
+	{
+		"id": "degradado-rosa-amarillo-morado",
+		"nombre": "Degradado rosa-amarillo-morado",
+		"tipo": "degradado",
+		"colores": ["#8a2be2", "#ffe600", "#ff2fa0"]
+	},
+	{
+		"id": "degradado-negro-rojo-amarillo",
+		"nombre": "Degradado negro-rojo-amarillo",
+		"tipo": "degradado",
+		"colores": ["#0a0a0a", "#ff2d2d", "#ffe600"]
+	},
+	{
+		"id": "solido-rosa",
+		"nombre": "Rosa sólido",
+		"tipo": "solido",
+		"colores": ["#ff2fa0"]
+	},
+	{
+		"id": "solido-verde",
+		"nombre": "Verde sólido",
+		"tipo": "solido",
+		"colores": ["#39d353"]
+	},
+	{
+		"id": "solido-azul",
+		"nombre": "Azul sólido",
+		"tipo": "solido",
+		"colores": ["#1f6fd6"]
+	}
+]

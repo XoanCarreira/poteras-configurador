@@ -1,0 +1,6 @@
+[
+	{ "id": "verde", "nombre": "Verde", "colorHex": "#2fae4e" },
+	{ "id": "negro", "nombre": "Negro", "colorHex": "#111111" },
+	{ "id": "azul", "nombre": "Azul", "colorHex": "#2f6fdc" },
+	{ "id": "plateado", "nombre": "Plateado", "colorHex": "#c9ccd1" }
+]

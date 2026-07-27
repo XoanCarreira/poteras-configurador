@@ -1,0 +1,38 @@
+/*
+ * Estilos globales — Poteras Artesanales Riotinta
+ * ------------------------------------------------
+ * Las variables --color-*, --font-* y --radius-* se generan en
+ * `+layout.svelte` a partir de `src/lib/theme.ts` (fuente única de verdad).
+ * No hardcodear colores/tipografías aquí ni en los componentes: usar
+ * siempre var(--color-...), var(--font-...), var(--radius-...).
+ */
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+	background: var(--color-ink);
+	color: var(--color-foam);
+	font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 400; /* Bungee ya es "bold" por diseño */
+	letter-spacing: 0.01em;
+}
+
+button {
+	font-family: inherit;
+}
+
+::selection {
+	background: var(--color-accent);
+	color: var(--color-ink);
+}

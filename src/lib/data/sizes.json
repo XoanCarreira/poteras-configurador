@@ -1,0 +1,6 @@
+[
+	{ "id": "2.5", "nombre": "2.5", "factorEscala": 0.8 },
+	{ "id": "3.0", "nombre": "3.0", "factorEscala": 0.9 },
+	{ "id": "3.5", "nombre": "3.5", "factorEscala": 1.0 },
+	{ "id": "4.0", "nombre": "4.0", "factorEscala": 1.12 }
+]
