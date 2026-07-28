@@ -5,7 +5,7 @@
 	import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 	import { configuratorState, catalog, type ConfiguratorState } from '$lib/stores/configuratorStore';
-	import { createBodyTexture } from '$lib/utils/gradientTexture';
+	import { createBodyTexture, createRadialTexture } from '$lib/utils/gradientTexture';
 	import { colors } from '$lib/theme';
 
 	let canvasEl: HTMLCanvasElement;
@@ -87,11 +87,7 @@
 				// Los modelos reales comparten geometría con la caché (`modelCache`):
 				// nunca liberarla. Los placeholders procedurales sí son únicos.
 				if (!activeRootIsReal) child.geometry.dispose();
-				const materials = Array.isArray(child.material) ? child.material : [child.material];
-				materials.forEach((m) => {
-					if (m instanceof THREE.MeshStandardMaterial && m.map) m.map.dispose();
-					m.dispose();
-				});
+				disposeMaterial(child.material);
 			}
 		});
 		potera.remove(activeRoot);
@@ -202,6 +198,15 @@
 		applyMaterials(state);
 	}
 
+	function disposeMaterial(material: THREE.Material | THREE.Material[]) {
+		const materials = Array.isArray(material) ? material : [material];
+		materials.forEach((m) => {
+			if ('map' in m && m.map) (m.map as THREE.Texture).dispose();
+			if ('matcap' in m && m.matcap) (m.matcap as THREE.Texture).dispose();
+			m.dispose();
+		});
+	}
+
 	function applyMaterials(state: ConfiguratorState) {
 		const pattern =
 			catalog.bodyPatterns.find((p) => p.id === state.bodyPatternId) ?? catalog.bodyPatterns[0];
@@ -216,9 +221,26 @@
 			mat.color.set('#ffffff');
 			mat.needsUpdate = true;
 		});
+
+		// Los ojos cambian de TIPO de material según la opción elegida
+		// (MeshStandardMaterial para color sólido, MeshMatcapMaterial para el
+		// degradado "realista" — ver nota en gradientTexture.ts). Por eso aquí
+		// se reemplaza el material entero en vez de mutar sus propiedades.
 		zoneMeshes.ojos.forEach((mesh) => {
-			(mesh.material as THREE.MeshStandardMaterial).color.set(eyeColor.colorHex);
+			disposeMaterial(mesh.material);
+			if (eyeColor.tipo === 'radial' && eyeColor.colores) {
+				mesh.material = new THREE.MeshMatcapMaterial({
+					matcap: createRadialTexture(eyeColor.colores[0], eyeColor.colores[1])
+				});
+			} else {
+				mesh.material = new THREE.MeshStandardMaterial({
+					roughness: 0.2,
+					metalness: 0.1,
+					color: eyeColor.colorHex
+				});
+			}
 		});
+
 		zoneMeshes.plumas.forEach((mesh) => {
 			(mesh.material as THREE.MeshStandardMaterial).color.set(featherColor.colorHex);
 		});
@@ -301,7 +323,7 @@
 		<div class="loading">Cargando modelo 3D…</div>
 	{/if}
 	<p class="hint">
-		Arrastra para girar en 360° · rueda/pellizco para zoom
+		Arrastra para xirar en 360° 
 		{#if usesRealModel}· modelo 3D real (WIP){/if}
 	</p>
 </div>

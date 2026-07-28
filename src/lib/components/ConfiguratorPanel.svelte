@@ -5,13 +5,20 @@
 		if (colors.length === 1) return colors[0];
 		return `linear-gradient(180deg, ${colors.join(', ')})`;
 	}
+
+	function eyeSwatchCss(eye: { colorHex: string; tipo?: string; colores?: [string, string] }): string {
+		if (eye.tipo === 'radial' && eye.colores) {
+			return `radial-gradient(circle at 35% 35%, ${eye.colores[0]}, ${eye.colores[1]})`;
+		}
+		return eye.colorHex;
+	}
 </script>
 
 <aside class="panel">
 	<header>
 		<img class="logo" src="/brand/logo-riotinta.png" alt="Poteras Artesanales Riotinta" />
 		<span class="eyebrow">Configurador</span>
-		<h1>Diseña tu potera</h1>
+		<h1>Deseña a túa poteira</h1>
 	</header>
 
 	<section>
@@ -46,7 +53,7 @@
 	</section>
 
 	<section>
-		<h2>Patrón de cuerpo</h2>
+		<h2>Patrón do corpo</h2>
 		<div class="swatch-grid">
 			{#each catalog.bodyPatterns as pattern}
 				<button
@@ -62,13 +69,13 @@
 	</section>
 
 	<section>
-		<h2>Color de ojos</h2>
+		<h2>Cor de ollos</h2>
 		<div class="swatch-grid swatch-grid--small">
 			{#each catalog.eyeColors as eye}
 				<button
 					class="swatch swatch--small"
 					class:active={$configuratorState.eyeColorId === eye.id}
-					style:background={eye.colorHex}
+					style:background={eyeSwatchCss(eye)}
 					onclick={() => ($configuratorState.eyeColorId = eye.id)}
 					title={eye.nombre}
 					aria-label={eye.nombre}
@@ -78,7 +85,7 @@
 	</section>
 
 	<section>
-		<h2>Color de plumas</h2>
+		<h2>Cor de plumas</h2>
 		<div class="swatch-grid swatch-grid--small">
 			{#each catalog.featherColors as feather}
 				<button
@@ -94,8 +101,7 @@
 	</section>
 
 	<p class="disclaimer">
-		Prototipo técnico — geometría y colores de muestra. Los modelos y patrones reales del
-		fabricante se incorporarán en una fase posterior.
+		Prototipo técnico — xeometría e cores de mostra. 
 	</p>
 </aside>
 

@@ -75,6 +75,18 @@
    acabado artesanal real) y sencillez de implementación en Three.js
    (simplemente se asigna la textura al `map` del material).
 
+   El mismo enfoque se reutiliza para los `eyeColor` de tipo `radial`, pero
+   con una técnica distinta: **matcap** (`MeshMatcapMaterial` +
+   `createRadialTexture()` en `gradientTexture.ts`). Un `map` normal depende
+   del UV del mesh (si no está bien desplegado, o no existe, el resultado se
+   ve plano/incorrecto — esto fue justo el primer bug encontrado: el ojo se
+   veía completamente negro). Un `matcap` en cambio se calcula según el
+   ángulo de la normal respecto a la cámara, **sin depender del UV del
+   mesh en absoluto** — por eso es la técnica elegida para simular un ojo
+   realista (pupila oscura al centro, esclerótica clara alrededor, con un
+   pequeño brillo/catchlight), y funciona igual de bien en el modelo real
+   que en la geometría placeholder.
+
    Esto implica un pequeño sub-pipeline de contenido:
    - Por cada `bodyPattern` nuevo, generar su textura (Photoshop/GIMP u otra
      herramienta) ajustada al UV unwrap del modelo base.

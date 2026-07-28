@@ -36,7 +36,12 @@ export interface BodyPattern {
 export interface ColorOption {
 	id: string;
 	nombre: string;
+	/** Color sólido (usado cuando `tipo` no es 'radial', o como fallback). */
 	colorHex: string;
+	/** 'solido' (por defecto) o 'radial' — degradado radial centro→borde. */
+	tipo?: 'solido' | 'radial';
+	/** Para tipo 'radial': [colorCentro, colorBorde]. */
+	colores?: [string, string];
 }
 
 export interface ConfiguratorState {

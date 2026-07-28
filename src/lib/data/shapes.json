@@ -4,7 +4,19 @@
 		"nombre": "Clásica",
 		"descripcion": "Silueta de torpedo tradicional, cuerpo redondeado.",
 		"modelo3d": "/models/potera-clasica-v1.glb"
-		
+	},
+
+	{
+		"id": "premium",
+		"nombre": "Premium",
+		"descripcion": "Versión premium con acabados especiales.",
+		"modelo3d": "/models/potera04.glb"
+	},
+
+	{
+		"id": "pequena",
+		"nombre": "Pequena",
+		"descripcion": "Cuerpo más pequeño y manejable, ideal para principiantes.",
+		"modelo3d": "/models/potera_s.glb"
 	}
-	
 ]
