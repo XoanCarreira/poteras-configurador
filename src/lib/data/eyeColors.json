@@ -2,10 +2,11 @@
 	{ "id": "verde", "nombre": "Verde", "colorHex": "#2fae4e" },
 	{ "id": "negro", "nombre": "Negro", "colorHex": "#111111" },
 	{ "id": "azul", "nombre": "Azul", "colorHex": "#2f6fdc" },
-	{ "id": "plateado", "nombre": "Plateado", "colorHex": "#c9ccd1" },
+	{ "id": "rojo", "nombre": "Vermello", "colorHex": "#8b4513" },
+	{ "id": "plateado", "nombre": "Prateado", "colorHex": "#c9ccd1" },
 	{
 		"id": "realista",
-		"nombre": "Realista (iris)",
+		"nombre": "Realista",
 		"colorHex": "#0a0a0a",
 		"tipo": "radial",
 		"colores": ["#0a0a0a", "#f5f5f5"]

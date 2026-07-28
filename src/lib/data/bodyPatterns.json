@@ -40,5 +40,17 @@
 		"nombre": "Azul sólido",
 		"tipo": "solido",
 		"colores": ["#1f6fd6"]
+	},
+	{
+		"id": "lineal-rosa-blanco",
+		"nombre": "Lineal rosa-blanco",
+		"tipo": "degradado",
+		"colores": ["#ff007f", "#ff007f","#ffffff", "#ffffff", "#ff007f"]
+	},
+	{
+		"id": "lineal-rosa-amarillo",
+		"nombre": "Lineal rosa-amarillo",
+		"tipo": "degradado",
+		"colores": ["#ff007f", "#ff007f","#ffff00", "#ffff00", "#ff007f"]
 	}
 ]

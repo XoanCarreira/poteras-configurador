@@ -18,7 +18,22 @@ export function createBodyTexture(colors: string[]): THREE.CanvasTexture {
 	if (colors.length === 1) {
 		ctx.fillStyle = colors[0];
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
-	} else {
+	}else if(colors.length === 5) {
+		const degradadoPotera = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+		const posiciones = [0, 0.5, 0.55, 0.92, 1]; // Posiciones de los colores en el degradado (0 a 1)
+
+		colors.forEach((color, i) => {
+			degradadoPotera.addColorStop(posiciones[i], color);
+		});
+
+
+
+	// 3. Aplicar el degradado al canvas
+	ctx.fillStyle = degradadoPotera;
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	}else{
 		const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
 		colors.forEach((color, i) => {
 			gradient.addColorStop(i / (colors.length - 1), color);
@@ -69,6 +84,7 @@ export function createRadialTexture(centerColor: string, edgeColor: string): THR
 	const gradient = ctx.createRadialGradient(cx, cy, canvas.width * 0.05, cx, cy, canvas.width * 0.5);
 	gradient.addColorStop(0, centerColor);
 	gradient.addColorStop(0.55, centerColor);
+	gradient.addColorStop(0.60, edgeColor);
 	gradient.addColorStop(1, edgeColor);
 	ctx.fillStyle = gradient;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
