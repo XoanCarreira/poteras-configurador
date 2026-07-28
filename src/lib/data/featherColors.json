@@ -1,5 +1,6 @@
 [
 	{ "id": "marron", "nombre": "Marrón", "colorHex": "#8a5a2b" },
 	{ "id": "blanco", "nombre": "Branco", "colorHex": "#f2f2f2" },
-	{ "id": "negro", "nombre": "Negro", "colorHex": "#1a1a1a" }
+	{ "id": "negro", "nombre": "Negro", "colorHex": "#1a1a1a" },
+	{ "id": "laranxa", "nombre": "Laranxa", "colorHex": "#ff330a" }
 ]

@@ -10,5 +10,12 @@
 		"colorHex": "#0a0a0a",
 		"tipo": "radial",
 		"colores": ["#0a0a0a", "#f5f5f5"]
+	},
+	{
+		"id": "demo",
+		"nombre": "Demo",
+		"colorHex": "#cccccc",
+		"tipo": "radial",
+		"colores": ["#af0f0f", "#f5f5f5"]
 	}
 ]
