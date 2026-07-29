@@ -3,26 +3,26 @@
 		"id": "clasica",
 		"nombre": "Clásica",
 		"descripcion": "Silueta de torpedo tradicional, corpo redondeado.",
-		"modelo3d": "/models/potera-clasica-v1.glb"
+		"modelo3d": "/models/potera_clasica.glb"
 	},
 
 	{
 		"id": "premium",
 		"nombre": "Premium",
 		"descripcion": "Versión premium con acabados especiais.",
-		"modelo3d": "/models/potera04.glb"
+		"modelo3d": "/models/potera_premium.glb"
 	},
 
 	{
 		"id": "ancha",
 		"nombre": "Ancha",
 		"descripcion": "Corpo máis ancho, ideal para principiantes ou espazos reducidos.",
-		"modelo3d": "/models/potera_s.glb"
+		"modelo3d": "/models/potera_ancha.glb"
 	},
 	{
 		"id": "novedade",
 		"nombre": "Novidade",
 		"descripcion": "Novo deseño con características innovadoras.",
-		"modelo3d": "/models/potera_07.glb"
+		"modelo3d": "/models/potera_novidade.glb"
 	}
 ]
